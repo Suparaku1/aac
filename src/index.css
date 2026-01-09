@@ -1,0 +1,201 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@import url('https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Quicksand:wght@400;500;600;700&display=swap');
+
+@layer base {
+  :root {
+    --background: 330 50% 98%;
+    --foreground: 280 40% 20%;
+
+    --card: 0 0% 100%;
+    --card-foreground: 280 40% 20%;
+
+    --popover: 0 0% 100%;
+    --popover-foreground: 280 40% 20%;
+
+    --primary: 330 75% 60%;
+    --primary-foreground: 0 0% 100%;
+
+    --secondary: 280 60% 65%;
+    --secondary-foreground: 0 0% 100%;
+
+    --muted: 330 30% 94%;
+    --muted-foreground: 280 20% 45%;
+
+    --accent: 175 60% 50%;
+    --accent-foreground: 0 0% 100%;
+
+    --destructive: 0 70% 55%;
+    --destructive-foreground: 0 0% 100%;
+
+    --border: 330 30% 88%;
+    --input: 330 30% 88%;
+    --ring: 330 75% 60%;
+
+    --radius: 1.25rem;
+
+    /* AAC specific colors - softer, more feminine */
+    --aac-orange: 20 85% 60%;
+    --aac-blue: 210 70% 60%;
+    --aac-green: 160 55% 50%;
+    --aac-yellow: 45 90% 65%;
+    --aac-pink: 330 75% 65%;
+    --aac-purple: 280 65% 60%;
+    --aac-red: 350 70% 60%;
+    --aac-cyan: 180 60% 50%;
+    
+    /* Category colors - softer pastels */
+    --cat-emotions: 45 85% 65%;
+    --cat-food: 20 80% 60%;
+    --cat-actions: 210 65% 60%;
+    --cat-colors: 280 60% 65%;
+    --cat-family: 330 70% 65%;
+    --cat-questions: 160 50% 55%;
+    --cat-places: 180 55% 55%;
+    --cat-objects: 30 70% 60%;
+
+    --sidebar-background: 330 30% 98%;
+    --sidebar-foreground: 280 30% 30%;
+    --sidebar-primary: 330 75% 60%;
+    --sidebar-primary-foreground: 0 0% 100%;
+    --sidebar-accent: 330 40% 95%;
+    --sidebar-accent-foreground: 280 40% 25%;
+    --sidebar-border: 330 25% 90%;
+    --sidebar-ring: 330 75% 60%;
+  }
+
+  .dark {
+    --background: 280 30% 10%;
+    --foreground: 330 30% 95%;
+
+    --card: 280 25% 14%;
+    --card-foreground: 330 30% 95%;
+
+    --popover: 280 25% 14%;
+    --popover-foreground: 330 30% 95%;
+
+    --primary: 330 70% 55%;
+    --primary-foreground: 0 0% 100%;
+
+    --secondary: 280 55% 55%;
+    --secondary-foreground: 0 0% 100%;
+
+    --muted: 280 20% 20%;
+    --muted-foreground: 330 20% 70%;
+
+    --accent: 175 55% 45%;
+    --accent-foreground: 0 0% 100%;
+
+    --destructive: 0 55% 40%;
+    --destructive-foreground: 0 0% 100%;
+
+    --border: 280 20% 22%;
+    --input: 280 20% 22%;
+    --ring: 330 70% 55%;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply bg-background text-foreground font-quicksand;
+    font-size: 18px;
+  }
+}
+
+@layer utilities {
+  .aac-shadow {
+    box-shadow: 0 4px 20px -2px hsl(var(--primary) / 0.2),
+                0 2px 8px -2px hsl(var(--secondary) / 0.15);
+  }
+  
+  .aac-shadow-lg {
+    box-shadow: 0 8px 35px -4px hsl(var(--primary) / 0.25),
+                0 4px 15px -4px hsl(var(--secondary) / 0.2);
+  }
+
+  .symbol-btn {
+    @apply transition-all duration-200 active:scale-95 hover:scale-110;
+  }
+
+  .sentence-bar {
+    @apply bg-gradient-to-r from-pink-100 via-purple-50 to-pink-100;
+  }
+
+  .shimmer {
+    background: linear-gradient(
+      90deg,
+      hsl(var(--primary) / 0.1) 0%,
+      hsl(var(--secondary) / 0.2) 50%,
+      hsl(var(--primary) / 0.1) 100%
+    );
+    background-size: 200% 100%;
+    animation: shimmer 3s ease-in-out infinite;
+  }
+
+  @keyframes shimmer {
+    0%, 100% { background-position: 200% 0; }
+    50% { background-position: -200% 0; }
+  }
+
+  .float-animation {
+    animation: float 3s ease-in-out infinite;
+  }
+
+  @keyframes float {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-6px); }
+  }
+
+  .wiggle-animation {
+    animation: wiggle 0.5s ease-in-out;
+  }
+
+  @keyframes wiggle {
+    0%, 100% { transform: rotate(0deg); }
+    25% { transform: rotate(-3deg); }
+    75% { transform: rotate(3deg); }
+  }
+
+  .pop-animation {
+    animation: pop 0.3s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+  }
+
+  @keyframes pop {
+    0% { transform: scale(0.8); opacity: 0; }
+    100% { transform: scale(1); opacity: 1; }
+  }
+
+  .glow {
+    box-shadow: 0 0 20px hsl(var(--primary) / 0.4),
+                0 0 40px hsl(var(--secondary) / 0.2);
+  }
+}
+
+@layer components {
+  .aac-grid {
+    display: grid;
+    gap: 0.75rem;
+    grid-template-columns: repeat(auto-fill, minmax(100px, 1fr));
+  }
+
+  @media (min-width: 640px) {
+    .aac-grid {
+      grid-template-columns: repeat(auto-fill, minmax(120px, 1fr));
+      gap: 1rem;
+    }
+  }
+
+  @media (min-width: 1024px) {
+    .aac-grid {
+      grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
+      gap: 1.25rem;
+    }
+  }
+}
